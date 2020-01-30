@@ -29,6 +29,9 @@ metadata:
     heritage: {{ .Release.Service }}
     component: {{ .Values.zookeeperMetadata.component }}
     cluster: {{ template "pulsar.fullname" . }}
+  annotations:
+    "helm.sh/hook": post-install
+    "helm.sh/hook-delete-policy": hook-succeeded,before-hook-creation
 spec:
   template:
     spec:
